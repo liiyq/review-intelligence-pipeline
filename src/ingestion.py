@@ -14,5 +14,12 @@ def load_reviews(max_samples: int):
     print(df.head())
     return df
 
+def save_to_duckdb(df: pd.DataFrame, db_path: str):
+    logger.info(f"Saving to DuckDB at {db_path}...")
+    conn = duckdb.connect(db_path)
+    conn.execute("CREATE TABLE IF NOT EXISTS reviews AS SELECT * FROM df")
+    conn.close()
+
 if __name__ == "__main__":
-    load_reviews(max_samples=1000)
+    df = load_reviews(max_samples=1000)
+    save_to_duckdb(df, db_path='data/reviews.duckdb')
