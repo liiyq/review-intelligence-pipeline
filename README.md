@@ -21,7 +21,7 @@ user pain points and market opportunities.
 
 ## Progress
 - [x] Environment setup & GitHub initialization
-- [ ] Stage 1: Architecture design
+- [x] Stage 1: Architecture design
 - [ ] Stage 2: Data ingestion
 - [ ] Stage 3: Core engineering
 - [ ] Stage 4: Production hardening
