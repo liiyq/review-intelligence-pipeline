@@ -8,8 +8,9 @@ logger = logging.getLogger(__name__)
 def clean_reviews(db_path: str):
     logger.info("Starting data cleaning...")
     conn = duckdb.connect(db_path)
+    conn.execute("DROP TABLE IF EXISTS reviews_cleaned")
     conn.execute("""
-        CREATE TABLE IF NOT EXISTS reviews_cleaned AS
+        CREATE TABLE reviews_cleaned AS
         SELECT rating, title, text, parent_asin, timestamp, helpful_vote, verified_purchase
         FROM reviews
         WHERE rating <= 2
